@@ -20,6 +20,17 @@
   --breakpoint-4xl: 4000px;
 }
 
+/* First declare in the layout and apply custom font here */
+.font-inter {
+  font-family: var(--font-inter);
+}
+.font-roboto {
+  font-family: var(--font-roboto-mono);
+}
+.font-payfair {
+  font-family: var(--font-playfair);
+}
+
 @theme {
   /* Your custom colors */
   --color-primary: #3b82f6;
