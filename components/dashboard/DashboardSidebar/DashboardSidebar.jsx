@@ -20,42 +20,19 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const DashboardSidebar = ({ isOpen, setIsOpen }) => {
   const currentPath = usePathname();
-  const [openDropdowns, setOpenDropdowns] = useState({});
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (key) => {
-    setOpenDropdowns((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+    setOpenDropdown((prev) => (prev === key ? null : key));
   };
 
   // Navigation items array
   const navigationItems = [
-    {
-      name: "Dashboard",
-      href: "/dashboard",
-      icon: Home,
-    },
-    {
-      name: "My Wallets",
-      href: "/dashboard/my-wallets",
-      icon: Wallet,
-    },
-    {
-      name: "Add Money",
-      href: "/dashboard/add-money",
-      icon: BanknoteArrowUp,
-    },
-    {
-      name: "Cash In",
-      href: "/dashboard/cash-in",
-      icon: CircleDollarSign,
-    },
-    {
-      name: "Withdraw",
-      href: "/dashboard/withdraw",
-      icon: PanelBottomOpen,
-    },
+    { name: "Dashboard", href: "/dashboard", icon: Home },
+    { name: "My Wallets", href: "/dashboard/my-wallets", icon: Wallet },
+    { name: "Add Money", href: "/dashboard/add-money", icon: BanknoteArrowUp },
+    { name: "Cash In", href: "/dashboard/cash-in", icon: CircleDollarSign },
+    { name: "Withdraw", href: "/dashboard/withdraw", icon: PanelBottomOpen },
     {
       name: "Transactions",
       href: "/dashboard/transactions",
@@ -66,26 +43,10 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
       href: "/dashboard/profit-history",
       icon: History,
     },
-    {
-      name: "Notifications",
-      href: "/dashboard/notifications",
-      icon: Bell,
-    },
-    {
-      name: "QR Code",
-      href: "/dashboard/qr-code",
-      icon: QrCode,
-    },
-    {
-      name: "Support",
-      href: "/dashboard/support",
-      icon: MessageCircle,
-    },
-    {
-      name: "Settings",
-      href: "/dashboard/settings",
-      icon: Settings,
-    },
+    { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
+    { name: "QR Code", href: "/dashboard/qr-code", icon: QrCode },
+    { name: "Support", href: "/dashboard/support", icon: MessageCircle },
+    { name: "Settings", href: "/dashboard/settings", icon: Settings },
   ];
 
   return (
@@ -131,7 +92,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={() => setOpenDropdowns({})}
+                    onClick={() => setOpenDropdown(null)} // close dropdowns
                     className={`group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
                       isActive
                         ? "bg-blue-50 text-primary"
@@ -156,21 +117,21 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               <button
                 onClick={() => toggleDropdown("components")}
                 className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
-                  openDropdowns["components"]
+                  openDropdown === "components"
                     ? "bg-blue-50 text-primary rounded-b-[0px]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-primary"
                 }`}
               >
                 <Layers
                   className={`mr-3 h-5 w-5 ${
-                    openDropdowns["components"]
+                    openDropdown === "components"
                       ? "text-primary"
                       : "text-gray-400 group-hover:text-primary"
                   }`}
                 />
                 Components
                 <span className="ml-auto transform transition-transform duration-300">
-                  {openDropdowns["components"] ? (
+                  {openDropdown === "components" ? (
                     <MdKeyboardArrowUp className="text-xl" />
                   ) : (
                     <MdKeyboardArrowDown className="text-xl" />
@@ -181,7 +142,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               {/* Dropdown Items */}
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdowns["components"]
+                  openDropdown === "components"
                     ? "max-h-40 opacity-100 bg-blue-50"
                     : "max-h-0 opacity-0"
                 }`}
@@ -232,21 +193,21 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               <button
                 onClick={() => toggleDropdown("components2")}
                 className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
-                  openDropdowns["components2"]
+                  openDropdown === "components2"
                     ? "bg-blue-50 text-primary rounded-b-[0px]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-primary"
                 }`}
               >
                 <Layers
                   className={`mr-3 h-5 w-5 ${
-                    openDropdowns["components2"]
+                    openDropdown === "components2"
                       ? "text-primary"
                       : "text-gray-400 group-hover:text-primary"
                   }`}
                 />
                 Components-2
                 <span className="ml-auto transform transition-transform duration-300">
-                  {openDropdowns["components2"] ? (
+                  {openDropdown === "components2" ? (
                     <MdKeyboardArrowUp className="text-xl" />
                   ) : (
                     <MdKeyboardArrowDown className="text-xl" />
@@ -257,7 +218,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               {/* Dropdown Items */}
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdowns["components2"]
+                  openDropdown === "components2"
                     ? "max-h-40 opacity-100 bg-blue-50"
                     : "max-h-0 opacity-0"
                 }`}
