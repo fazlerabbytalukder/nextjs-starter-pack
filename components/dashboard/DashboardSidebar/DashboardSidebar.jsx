@@ -20,7 +20,14 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const DashboardSidebar = ({ isOpen, setIsOpen }) => {
   const currentPath = usePathname();
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({});
+
+  const toggleDropdown = (key) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   // Navigation items array
   const navigationItems = [
@@ -146,23 +153,23 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
             {/* Components Dropdown */}
             <li>
               <button
-                onClick={() => setOpenDropdown(!openDropdown)}
+                onClick={() => toggleDropdown("components")}
                 className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
-                  openDropdown
+                  openDropdowns["components"]
                     ? "bg-blue-50 text-primary rounded-b-[0px]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-primary"
                 }`}
               >
                 <Layers
                   className={`mr-3 h-5 w-5 ${
-                    openDropdown
+                    openDropdowns["components"]
                       ? "text-primary"
                       : "text-gray-400 group-hover:text-primary"
                   }`}
                 />
                 Components
                 <span className="ml-auto transform transition-transform duration-300">
-                  {openDropdown ? (
+                  {openDropdowns["components"] ? (
                     <MdKeyboardArrowUp className="text-xl" />
                   ) : (
                     <MdKeyboardArrowDown className="text-xl" />
@@ -173,7 +180,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               {/* Dropdown Items */}
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown
+                  openDropdowns["components"]
                     ? "max-h-40 opacity-100 bg-blue-50"
                     : "max-h-0 opacity-0"
                 }`}
@@ -213,6 +220,70 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                       }`}
                     >
                       Tables
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            {/* Components-2 Dropdown */}
+            <li>
+              <button
+                onClick={() => toggleDropdown("components2")}
+                className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
+                  openDropdowns["components2"]
+                    ? "bg-blue-50 text-primary rounded-b-[0px]"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                }`}
+              >
+                <Layers
+                  className={`mr-3 h-5 w-5 ${
+                    openDropdowns["components2"]
+                      ? "text-primary"
+                      : "text-gray-400 group-hover:text-primary"
+                  }`}
+                />
+                Components-2
+                <span className="ml-auto transform transition-transform duration-300">
+                  {openDropdowns["components2"] ? (
+                    <MdKeyboardArrowUp className="text-xl" />
+                  ) : (
+                    <MdKeyboardArrowDown className="text-xl" />
+                  )}
+                </span>
+              </button>
+
+              {/* Dropdown Items */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdowns["components2"]
+                    ? "max-h-40 opacity-100 bg-blue-50"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="mt-2 pl-9 space-y-1">
+                  <li>
+                    <Link
+                      href="/dashboard/components2/example1"
+                      className={`block px-3 py-2 text-sm rounded-md ${
+                        currentPath === "/dashboard/components2/example1"
+                          ? "bg-blue-100 text-primary"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                      }`}
+                    >
+                      Example 1
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/dashboard/components2/example2"
+                      className={`block px-3 py-2 text-sm rounded-md ${
+                        currentPath === "/dashboard/components2/example2"
+                          ? "bg-blue-100 text-primary"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                      }`}
+                    >
+                      Example 2
                     </Link>
                   </li>
                 </ul>
