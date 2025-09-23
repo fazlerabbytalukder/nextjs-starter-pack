@@ -6,6 +6,7 @@ import {
   CircleDollarSign,
   History,
   Home,
+  Layers,
   MessageCircle,
   PanelBottomOpen,
   QrCode,
@@ -14,9 +15,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const DashboardSidebar = ({ isOpen, setIsOpen }) => {
   const currentPath = usePathname();
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   // Navigation items array
   const navigationItems = [
@@ -138,6 +142,80 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                 </li>
               );
             })}
+
+            {/* Components Dropdown */}
+            <li>
+              <button
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                  openDropdown
+                    ? "bg-blue-50 text-primary border-r-4 border-primary"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                }`}
+              >
+                <Layers
+                  className={`mr-3 h-5 w-5 ${
+                    openDropdown
+                      ? "text-primary"
+                      : "text-gray-400 group-hover:text-primary"
+                  }`}
+                />
+                Components
+                <span className="ml-auto transform transition-transform duration-300">
+                  {openDropdown ? (
+                    <MdKeyboardArrowUp className="text-xl" />
+                  ) : (
+                    <MdKeyboardArrowDown className="text-xl" />
+                  )}
+                </span>
+              </button>
+
+              {/* Dropdown Items */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="mt-2 ml-10 space-y-2">
+                  <li>
+                    <Link
+                      href="/dashboard/components/buttons"
+                      className={`block px-3 py-2 text-sm rounded-md ${
+                        currentPath === "/dashboard/components/buttons"
+                          ? "bg-blue-100 text-primary"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                      }`}
+                    >
+                      Buttons
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/dashboard/components/cards"
+                      className={`block px-3 py-2 text-sm rounded-md ${
+                        currentPath === "/dashboard/components/cards"
+                          ? "bg-blue-100 text-primary"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                      }`}
+                    >
+                      Cards
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/dashboard/components/tables"
+                      className={`block px-3 py-2 text-sm rounded-md ${
+                        currentPath === "/dashboard/components/tables"
+                          ? "bg-blue-100 text-primary"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-primary"
+                      }`}
+                    >
+                      Tables
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>
