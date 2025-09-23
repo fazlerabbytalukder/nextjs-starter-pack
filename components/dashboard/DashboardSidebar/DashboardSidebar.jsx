@@ -107,7 +107,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 mt-8 px-4">
+        <nav className="flex-1 mt-8 px-4 h-full overflow-y-auto">
           <ul className="space-y-2">
             {navigationItems.map((item) => {
               const Icon = item.icon;
