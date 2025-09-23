@@ -1,4 +1,5 @@
 "use client";
+import userImg from "@/assets/dashboard/user/user-img.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -34,7 +35,7 @@ const UserDropdown = () => {
       >
         <div className="block">
           <Image
-            src=""
+            src={userImg}
             width={50}
             height={50}
             alt="User avatar"
@@ -78,7 +79,6 @@ const UserDropdown = () => {
               <button
                 href="#"
                 className="block px-4 py-2 bg-red-100 hover:bg-red-500 text-red-700 hover:text-white w-full text-start rounded-lg"
-                onClick={logout}
               >
                 Logout
               </button>
