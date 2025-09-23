@@ -48,12 +48,12 @@ const UserDropdown = () => {
         </span>
       </button>
       {userDropdown && (
-        <div className="absolute right-0 mt-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-          <ul className="p-2">
+        <div className="absolute right-0 mt-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10 p-2">
+          <ul>
             <li>
               <Link
                 href="/dashboard/settings"
-                className="block px-4 py-2 hover:bg-orange-500 hover:text-white rounded-lg"
+                className="block px-4 py-2 hover:bg-primary hover:text-white rounded-lg"
               >
                 Settings
               </Link>
@@ -61,7 +61,7 @@ const UserDropdown = () => {
             <li>
               <Link
                 href="/dashboard/settings/change-password"
-                className="block px-4 py-2 hover:bg-orange-500 hover:text-white rounded-lg"
+                className="block px-4 py-2 hover:bg-primary hover:text-white rounded-lg"
               >
                 Change Password
               </Link>
@@ -69,7 +69,7 @@ const UserDropdown = () => {
             <li>
               <Link
                 href="/dashboard/support"
-                className="block px-4 py-2 hover:bg-orange-500 hover:text-white rounded-lg"
+                className="block px-4 py-2 hover:bg-primary hover:text-white rounded-lg"
               >
                 Support Ticket
               </Link>
