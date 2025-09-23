@@ -147,7 +147,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
             <li>
               <button
                 onClick={() => setOpenDropdown(!openDropdown)}
-                className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
                   openDropdown
                     ? "bg-blue-50 text-primary border-r-4 border-primary"
                     : "text-gray-600 hover:bg-gray-50 hover:text-primary"
