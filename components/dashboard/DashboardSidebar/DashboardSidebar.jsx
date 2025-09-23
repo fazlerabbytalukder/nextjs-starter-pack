@@ -92,7 +92,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={() => setOpenDropdown(null)} // close dropdowns
+                    onClick={() => setOpenDropdown(null)}
                     className={`group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
                       isActive
                         ? "bg-blue-50 text-primary"
