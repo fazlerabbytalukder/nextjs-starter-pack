@@ -126,7 +126,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                     href={item.href}
                     className={`group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 ${
                       isActive
-                        ? "bg-blue-50 text-primary border-r-4 border-primary"
+                        ? "bg-blue-50 text-primary"
                         : "text-gray-600 hover:bg-gray-50 hover:text-primary"
                     }`}
                   >
@@ -149,7 +149,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
                 onClick={() => setOpenDropdown(!openDropdown)}
                 className={`group flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
                   openDropdown
-                    ? "bg-blue-50 text-primary border-r-4 border-primary"
+                    ? "bg-blue-50 text-primary rounded-b-[0px]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-primary"
                 }`}
               >
@@ -173,10 +173,12 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
               {/* Dropdown Items */}
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  openDropdown
+                    ? "max-h-40 opacity-100 bg-blue-50"
+                    : "max-h-0 opacity-0"
                 }`}
               >
-                <ul className="mt-2 ml-10 space-y-2">
+                <ul className="mt-2 pl-9 space-y-1">
                   <li>
                     <Link
                       href="/dashboard/components/buttons"
